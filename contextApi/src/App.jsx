@@ -1,9 +1,12 @@
-import { useState } from 'react'
+// import { useContext } from 'react';
 import './App.css'
 import Comp1 from './components/Comp1'
+// import { DataContext } from './context/DataProvider';
+import useGlobalData from './hooks/useGlobalData';
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  // consumer
+  const { counter, setCounter } = useGlobalData();
 
   const incr = (e) => {
     e.preventDefault();
@@ -20,9 +23,9 @@ function App() {
       <h1> Parent Component: {counter} </h1>
       <button onClick={desc}>Decrement</button>
       <button onClick={incr} >Increment</button>
-      <Comp1 counter={counter} />
+      <Comp1 />
     </div>
   );
 }
 
-export default App
+export default App;
